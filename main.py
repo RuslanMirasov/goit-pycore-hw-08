@@ -1,4 +1,4 @@
-from address_book import AddressBook
+from storage import save_data, load_data
 from handlers import (
     parse_input,
     add_contact,
@@ -11,7 +11,7 @@ from handlers import (
 )
 
 def main():
-   book = AddressBook()
+   book = load_data()
    print("Welcome to the assistant bot!")
 
    while True:
@@ -19,6 +19,7 @@ def main():
       command, *args = parse_input(user_input)
 
       if command in ["close", "exit"]:
+         save_data(book) 
          print("Good bye!")
          break
 
